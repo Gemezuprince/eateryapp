@@ -1,0 +1,11 @@
+node_modules/
+.env
+
+# Acode/Termux temporary files
+*.log
+
+# OS files
+.DS_Store
+
+# Optional
+uploads/
