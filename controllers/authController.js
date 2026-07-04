@@ -8,12 +8,12 @@ const generateToken = (id) => {
 
 // POST /api/auth/register
 exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, phone, password } = req.body;
 
   try {
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ $or: [{ email }, { phone }] });
     if (existingUser) {
-      return res.status(400).json({ message: 'Email already in use' });
+      return res.status(400).json({ message: 'Email or phone already in use' });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -22,6 +22,7 @@ exports.register = async (req, res) => {
     const user = await User.create({
       name,
       email,
+      phone,
       password: hashedPassword
     });
 
@@ -29,6 +30,7 @@ exports.register = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      phone: user.phone,
       role: user.role,
       token: generateToken(user._id)
     });

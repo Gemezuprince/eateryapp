@@ -35,10 +35,13 @@ const OrderSchema = new mongoose.Schema({
     required: true
   },
   paymentStatus: {
-    type: String,
-    enum: ['unpaid', 'paid'],
-    default: 'unpaid'
-  }
+  type: String,
+  enum: ['unpaid', 'paid'],
+  default: 'unpaid'
+},
+paystackReference: {
+  type: String
+}
 }, { timestamps: true });
 
 module.exports = mongoose.model('Order', OrderSchema);

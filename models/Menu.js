@@ -12,10 +12,11 @@ const MenuSchema = new mongoose.Schema({
     required: true
   },
   category: {
-    type: String,
-    enum: ['starter', 'main', 'dessert', 'drink'],
-    required: true
-  },
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'Category',
+  required: true
+},
+   
   imageUrl: String,
   available: {
     type: Boolean,
