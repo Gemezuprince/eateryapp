@@ -23,11 +23,12 @@ exports.initiatePayment = async (req, res) => {
     const response = await axios.post(
       'https://api.paystack.co/transaction/initialize',
       {
-        email: req.user.email,
-        amount: order.totalAmount * 100,
-        metadata: {
-          orderId: order._id.toString()
-        }
+  email: req.user.email,
+  amount: order.totalAmount * 100,
+  callback_url: 'https://eatery-xl.vercel.app/orders',
+  metadata: {
+    orderId: order._id.toString()
+  }
       },
       {
         headers: {
