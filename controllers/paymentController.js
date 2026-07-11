@@ -25,7 +25,7 @@ exports.initiatePayment = async (req, res) => {
       {
   email: req.user.email,
   amount: order.totalAmount * 100,
-  callback_url: 'https://eatery-xi.vercel.app/orders',
+  callback_url: 'https://eateryapp1.vercel.app/orders',
   metadata: {
     orderId: order._id.toString()
   }
