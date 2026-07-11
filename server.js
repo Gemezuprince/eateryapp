@@ -8,7 +8,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: 'https://eatery-xi.vercel.app',
+  origin: ['https://eatery-xi.vercel.app', 'http://localhost:3000'],
   credentials: true
 }));
 app.use(express.json());
